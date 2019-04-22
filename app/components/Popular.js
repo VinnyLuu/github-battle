@@ -60,16 +60,9 @@ SelectLanguage.propTypes = {
 
 
 class Popular extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedLanguage: 'All',
-      repos: null
-    };
-
-    this.updateLanguage = this.updateLanguage.bind(this); // in updateLanguage, dont know what the this keyword is bound to until it is invoked
-    // with bind, it will take in a context and return a new function with the this keyword in the function bound to whatever bind takes in
-    // this way, the this.setState inside the updateLanguage function will be for the Component
+  state = {
+    selectedLanguage: 'All',
+    repos: null
   }
 
   componentDidMount() {
@@ -77,7 +70,7 @@ class Popular extends React.Component {
     this.updateLanguage(this.state.selectedLanguage);
   }
 
-  updateLanguage(lang) {
+  updateLanguage = (lang) => {
     this.setState(() => ({
       selectedLanguage: lang,
       repos: null
